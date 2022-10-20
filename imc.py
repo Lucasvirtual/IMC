@@ -1,13 +1,36 @@
+from cProfile import label
 import tkinter
 from tkinter import *
 from tkinter import ttk
 from turtle import width
+import tkinter as tk
+
 
 
 janela = Tk()
 janela.title("Calculadora IMC")
-text_orientacao = Label(janela, text="Energy Manager")
+
 janela.geometry("250x250")
+
+#------FUNÇÕES--------#
+def altura():
+    altura = input("Digite sua altura")
+
+
+def peso ():
+   peso = input("Digite seu peso")
+
+
+def bt_onclick():
+    entAltura = float(labelAltura.get())
+    entPeso = float(labelPeso.get())
+    imc = entPeso (entAltura * entAltura)
+    print = (infoPeso.get())
+    resultado1["text"] = imc.get()
+
+
+
+
 
 #--------------------------------------------------#
 labelAltura = Label(text="Informe sua altura:")
@@ -17,6 +40,7 @@ infoAltura = Entry(width=10, justify="left")
 infoAltura.place(x=15, y=30)
 #--------------------------------------------------#
 
+
 labelPeso = Label(text="Informe seu peso:")
 labelPeso.place(x=145, y=5)
 
@@ -24,12 +48,15 @@ infoPeso = Entry(width=10, justify="left")
 infoPeso.place(x=170, y=30)
 #---------------------------------------------------#
 
-calcular = Button(width=10, text="Calcular")
-calcular.place(x=85, y=125)
-#---------------------------------------------------#
 
-resultado = Entry(width=30)
-resultado.place(x=32, y=170)
+btCalcular = Button(width=10, text="Calcular", command = bt_onclick)
+btCalcular.place(x=85, y=125)
+
+
+
+#---------------------------------------------------#
+resultado1 = Label(text=("Resultado aqui"))
+resultado1.place(x=32, y=170)
 
 
 
