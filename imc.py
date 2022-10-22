@@ -14,18 +14,20 @@ janela.geometry("250x250")
 
 #------FUNÇÕES--------#
 def altura():
-    altura = input("Digite sua altura")
+    entAltura = input("Digite sua altura")
+    
 
 
 def peso ():
-   peso = input("Digite seu peso")
+   entPeso = input("Digite seu peso")
+   
 
 
 def bt_onclick():
     entAltura = float(labelAltura.get())
     entPeso = float(labelPeso.get())
     imc = entPeso (entAltura * entAltura)
-    print = (infoPeso.get())
+    
     resultado1["text"] = imc.get()
 
 
