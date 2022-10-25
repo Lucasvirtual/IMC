@@ -4,7 +4,7 @@ from tkinter import *
 from tkinter import ttk
 from turtle import width
 import tkinter as tk
-
+import math
 
 
 janela = Tk()
@@ -13,22 +13,16 @@ janela.title("Calculadora IMC")
 janela.geometry("250x250")
 
 #------FUNÇÕES--------#
-def altura():
-    altura = input("Digite sua altura")
 
-
-def peso ():
-   peso = input("Digite seu peso")
 
 
 def bt_onclick():
-    entAltura = float(labelAltura.get())
-    entPeso = float(labelPeso.get())
-    imc = entPeso (entAltura * entAltura)
-    print = (infoPeso.get())
-    resultado1["text"] = imc.get()
-
-
+    entAltura = float(infoAltura.get())
+    entPeso = float(infoPeso.get())
+    
+    imc =  float(entPeso /(entAltura ** 2))
+    
+    resultado1["text"] = imc
 
 
 
@@ -53,9 +47,8 @@ btCalcular = Button(width=10, text="Calcular", command = bt_onclick)
 btCalcular.place(x=85, y=125)
 
 
-
 #---------------------------------------------------#
-resultado1 = Label(text=("Resultado aqui"))
+resultado1 = Label(janela, text=("Resultado aqui"))
 resultado1.place(x=32, y=170)
 
 
