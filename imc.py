@@ -4,7 +4,7 @@ from tkinter import *
 from tkinter import ttk
 from turtle import width
 import tkinter as tk
-import math
+
 
 
 janela = Tk()
@@ -16,6 +16,7 @@ janela.geometry("250x250")
 
 
 
+
 def bt_onclick():
     entAltura = float(infoAltura.get())
     entPeso = float(infoPeso.get())
@@ -23,6 +24,8 @@ def bt_onclick():
     imc =  float(entPeso /(entAltura ** 2))
     
     resultado1["text"] = imc
+
+
 
 
 
