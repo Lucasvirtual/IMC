@@ -21,10 +21,26 @@ def bt_onclick():
     entAltura = float(infoAltura.get())
     entPeso = float(infoPeso.get())
     
-    imc =  float(entPeso /(entAltura ** 2))
+    imc  =  float(entPeso /(entAltura ** 2))
     
-    resultado1["text"] = imc
+    if imc <= 18.5: 
+        situacao = "Magreza"
 
+    elif imc >= 18.5 and imc <= 24.9:
+        situacao = "Normal"
+
+    elif imc >= 25 and imc <= 29.9:
+        situacao = "Sobrepeso 1"
+
+    elif imc >= 30 and imc <= 39.9:
+        situacao = "Obesidade 2" 
+
+    else:
+        situacao = "Obesidade Grave 3"
+    
+    
+    resultado1["text"] = ("O IMC é {:.2f} e a situação {}").format(imc,situacao)
+    
 
 
 
@@ -52,7 +68,8 @@ btCalcular.place(x=85, y=125)
 
 #---------------------------------------------------#
 resultado1 = Label(janela, text=("Resultado aqui"))
-resultado1.place(x=32, y=170)
+resultado1.place(x=3, y=170)
+
 
 
 
