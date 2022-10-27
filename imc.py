@@ -1,4 +1,5 @@
 from cProfile import label
+from pickletools import int4
 import tkinter
 from tkinter import *
 from tkinter import ttk
@@ -9,7 +10,7 @@ import tkinter as tk
 janela = Tk()
 janela.title("Calculadora IMC")
 
-janela.geometry("250x250")
+janela.geometry("350x250")
 
 #--------FUNÇÕES--------#
 
@@ -17,8 +18,11 @@ def bt_onclick():
     entAltura = float(infoAltura.get())
     entPeso = float(infoPeso.get())
     entIdade = int(infoIdade.get())
-    imc  =  float(entPeso /(entAltura ** 2))
+    entSexo = str(infoSexo.get())
+    alturaM = entAltura / 100
+    imc  =  float(entPeso /(alturaM ** 2))
     
+ 
     if imc <= 18.5: 
         situacao = "Magreza"
 
@@ -34,13 +38,21 @@ def bt_onclick():
     else:
         situacao = "Obesidade Grave 3"
     
-    if infoSexo == "m" and "M":
-        tmb = 66 + (13.7 * entPeso) + (5.0 * entAltura) - (6.8 * entIdade)
+    resultado1["text"] = ("O IMC é {:.2f} e a situação está {}").format(imc,situacao)
     
+#----------------------------------------------------------------------------------------# 
     
+    if entSexo == "m" or "M":
+        tmb = int(66 + (13.7 * entPeso) + (5.0 * entAltura) - (6.8 * entIdade))
+
+    elif entSexo == "f" or "F":
+        tmb = int(665 + (9.6 * entPeso) + (5.0 * entAltura) - (4.7 * entIdade))   
+
+    else:
+        tmb = "opção invalida"     
     
-    resultado1["text"] = ("O IMC é {:.2f} e a situação {}").format(imc,situacao)
-    resultado2["text"] = tmb
+   
+    resultado2["text"] = ("A sua taxa de metabolismo basal é: {}").format(tmb)
 
 
 #--------------------------------------------------------#
