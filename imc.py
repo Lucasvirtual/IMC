@@ -3,14 +3,14 @@ from pickletools import int4
 import tkinter
 from tkinter import *
 from tkinter import ttk
-from turtle import width
+from turtle import bgcolor, width
 import tkinter as tk
 
 
 janela = Tk()
 janela.title("Calculadora IMC")
-
 janela.geometry("350x250")
+
 
 #--------FUNÇÕES--------#
 
@@ -18,7 +18,7 @@ def bt_onclick():
     entAltura = float(infoAltura.get())
     entPeso = float(infoPeso.get())
     entIdade = int(infoIdade.get())
-    entSexo = str(infoSexo.get())
+    entSexo = str(cb_Sexo.get())
     alturaM = entAltura / 100
     imc  =  float(entPeso /(alturaM ** 2))
     
@@ -42,49 +42,53 @@ def bt_onclick():
     
 #----------------------------------------------------------------------------------------# 
     
-    if entSexo == "m" or "M":
-        tmb = int(66 + (13.7 * entPeso) + (5.0 * entAltura) - (6.8 * entIdade))
+    if cb_Sexo.get() == "Masculino":
+        tmb = float(66 + (13.7 * entPeso) + (5.0 * entAltura) - (6.8 * entIdade))
 
-    elif entSexo == "f" or "F":
-        tmb = int(665 + (9.6 * entPeso) + (5.0 * entAltura) - (4.7 * entIdade))   
+
+    elif cb_Sexo.get() == "Feminino":
+        tmb = float(665 + (9.6 * entPeso) + (1.8 * entAltura) - (4.7 * entIdade)) 
 
     else:
-        tmb = "opção invalida"     
-    
+        tmb = ("Invalido")
+ 
    
-    resultado2["text"] = ("A sua taxa de metabolismo basal é: {}").format(tmb)
+    resultado2["text"] = ("A sua taxa de metabolismo basal é: {:.2f} calorias").format(tmb)
 
 
 #--------------------------------------------------------#
-labelAltura = Label(text="Informe sua altura:")
+labelAltura = Label(text="Informe sua altura em Centímetros:")
 labelAltura.place(x=5, y=5)
 
 infoAltura = Entry(width=10, justify="left")
-infoAltura.place(x=15, y=30)
+infoAltura.place(x=15, y=25)
 #--------------------------------------------------------#
 
 
 labelPeso = Label(text="Informe seu peso:")
-labelPeso.place(x=5, y=50)
+labelPeso.place(x=5, y=45)
 
 infoPeso = Entry(width=10, justify="left")
-infoPeso.place(x=15, y=75)
+infoPeso.place(x=15, y=70)
 #--------------------------------------------------------#
 
-
 labelSexo = Label(text="Informe seu sexo:")
-labelSexo.place(x=5, y=90)
+labelSexo.place(x=5, y=85)
 
-infoSexo = Entry(width=10, justify="left")
-infoSexo.place(x=15, y=115)
+listSexo=["Masculino","Feminino"]
+
+cb_Sexo=ttk.Combobox(width=10,values=listSexo)
+cb_Sexo.set("")
+cb_Sexo.pack()
+cb_Sexo.place(x=15, y=105)
 
 
 #--------------------------------------------------------#
 labelIdade = Label(text="Informe sua idade:")
-labelIdade.place(x=5, y=135)
+labelIdade.place(x=5, y=130)
 
 infoIdade = Entry(width=10, justify="left")
-infoIdade.place(x=15, y=155)
+infoIdade.place(x=15, y=150)
 #--------------------------------------------------------#
 
 
